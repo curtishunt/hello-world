@@ -4,13 +4,13 @@ using namespace std;
 
 void PrintNumPattern(int num1, int num2, int rnCnt, int origNum){
    cout << num1 << " ";
-   cout << " runCount: " << rnCnt << "\tnum1: " << num1 << " \torigNum/3: " << origNum/3 << endl;
-   if(rnCnt == 1){
+   cout << " runCount: " << rnCnt << "\tnum1: " << num1 << " \torigNum " << origNum << endl;
+   if(rnCnt == -origNum){
    }
-   else if((num1 < 0) || ((num1 > 0)&&(rnCnt <= origNum/3))){
+   else if(rnCnt <= 0){
       PrintNumPattern(num1 + num2, num2, rnCnt - 1, origNum);
    }
-   else if((num1 > 0)&&(rnCnt > origNum/3)){
+   else if(rnCnt > 0){
       PrintNumPattern(num1 - num2, num2, rnCnt - 1, origNum);
    }
 }
@@ -23,8 +23,8 @@ int main() {
     
    cin >> firstNum;
    cin >> secondNum;
-   int rnCnt = (firstNum*2/secondNum)+2;
-   PrintNumPattern(firstNum, secondNum, rnCnt, firstNum);
+   int rnCnt = (firstNum/secondNum)+1;
+   PrintNumPattern(firstNum, secondNum, rnCnt, rnCnt);
    
    return 0;
 }
