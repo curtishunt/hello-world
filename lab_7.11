@@ -2,20 +2,19 @@
 
 using namespace std;
 
-void PrintNumPattern(int num1, int num2, int rnCnt, int origNum){
+void PrintNumPattern(int num1, int num2){
    cout << num1 << " ";
-   cout << " runCount: " << rnCnt << "\tnum1: " << num1 << " \torigNum " << origNum << endl;
-   if(rnCnt == -origNum){
+
+   if(num1 < 0){
    }
-   else if(rnCnt <= 0){
-      PrintNumPattern(num1 + num2, num2, rnCnt - 1, origNum);
-   }
-   else if(rnCnt > 0){
-      PrintNumPattern(num1 - num2, num2, rnCnt - 1, origNum);
+   else{
+      num1 = num1 - num2;
+      PrintNumPattern(num1, num2);
+      cout << num1 + num2 << ' ';
    }
 }
 
-void PrintNumPattern(int num1, int num2, int rnCnt, int origNum);
+void PrintNumPattern(int num1, int num2);
 
 int main() {
    int firstNum;
@@ -23,8 +22,7 @@ int main() {
     
    cin >> firstNum;
    cin >> secondNum;
-   int rnCnt = (firstNum/secondNum)+1;
-   PrintNumPattern(firstNum, secondNum, rnCnt, rnCnt);
+   PrintNumPattern(firstNum, secondNum);
    
    return 0;
 }
